@@ -35,3 +35,44 @@ next meeting:
 -------------
 
 9:45 next monday (02-12)
+
+
+02-12 meeting:
+==============
+
+initialisation:
+---------------
+start with an empty map, and add feature in the map as you sees it
+=> ignore the radius but store it separately for matching (use low pass filter (moyenn glissante exponentielle) as kalman filter simplification on it)
+
+X matrix = map
+Z observations
+
+init map with feature position combiened wth robot estimated position
+
+P = matrix of correlation matrix (variance covariance)
+        si features indep, bloc diagonal matrix
+
+R = matrix containing the uncertainties on the measurment
+so put Pl = JPt-1T^-1+R (J is the jacobian) take the robot position inverytzintoes into account
+we can use Pl = Q for the first version
+
+state estimation:
+-----------------
+
+common pitfall: needs to linearize the jacobian of f function but not f itelf
+P = AtPA + BtQuB + Q
+A jacobian of F
+Qu incertainty of odom
+Q incertainty of thr model
+
+
+next tasks:
+-----------
+- landmark adding
+- dynamic
+- data association
+these three steps needs to be done together
+
+!
+force numpy mat type in python
