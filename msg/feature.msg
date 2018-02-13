@@ -1,0 +1,2 @@
+pose position
+float64 diameter
